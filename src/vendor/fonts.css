@@ -1,0 +1,41 @@
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('./fonts/chakra-petch-v13-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Chakra Petch';
+  src: url('./fonts/chakra-petch-v13-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./fonts/chakra-petch-v13-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('./fonts/chakra-petch-v13-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./fonts/chakra-petch-v13-latin-600.woff2') format('woff2');
+  font-weight: 600;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'JetBrains Mono';
+  src: url('./fonts/chakra-petch-v13-latin-700.woff2') format('woff2');
+  font-weight: 700;
+  font-display: swap;
+}

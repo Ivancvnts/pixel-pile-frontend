@@ -1,0 +1,41 @@
+/* global.css */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+:root {
+  /* Brand */
+  --pp-color-accent: #b6ff2e; /* neon green, primary CTA */
+  --pp-color-accent-ink: #0a0a0b; /* text on top of accent */
+
+  /* Fonts */
+  --pp-font-heading: 'Chakra Petch', sans-serif;
+  --pp-font-body: 'Space Grotesk', sans-serif;
+  --pp-font-mono: 'JetBrains Mono', monospace;
+
+  /* Backgrounds */
+  --pp-color-bg: #0a0a0b; /* app background */
+  --pp-color-surface: #101115; /* cards */
+  --pp-color-surface-raised: #0e0f13; /* modals, popovers */
+  --pp-color-surface-inset: #131418; /* inputs, sunken elements */
+  --pp-color-chip: #1a1b20; /* tags, pills */
+
+  /* Borders */
+
+  --pp-color-border: #1e1f22; /* default card border */
+  --pp-color-border-strong: #2a2c30; /* emphasized border, hover */
+
+  /* Text */
+  --pp-color-text-primary: #f4f4f1; /* headings, primary content */
+  --pp-color-text-secondary: #9a9aa2; /* body copy, descriptions */
+  --pp-color-text-tertiary: #71717a; /* metadata, timestamps, labels */
+
+  /* Status */
+  --pp-color-danger: #ff5a4d; /* remove, delete, error actions */
+
+  /* Layout */
+  --pp-section-max-width: 1280px; /* content width cap on large screens */
+  --pp-section-padding-inline: 24px; /* lateral margin, mobile */
+}
