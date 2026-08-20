@@ -2,9 +2,9 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding: 14px;
-  font-family: var(--pp-font-heading);
   color: var(--pp-color-text-primary);
+  padding-top: 14px;
+  padding-bottom: 14px;
 }
 
 .header__logo-container {
@@ -19,6 +19,8 @@
 }
 
 .header__title {
+  font-family: var(--pp-font-heading);
+  font-weight: 700;
   font-size: 20px;
   margin: 0;
   letter-spacing: 0.14em;
@@ -39,8 +41,10 @@
   color: var(--pp-color-text-primary);
   background-color: var(--pp-color-chip);
   border-radius: 16px;
-  font-size: 13px;
   font-family: var(--pp-font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
   text-decoration: none;
 }
 
@@ -48,8 +52,13 @@
   font-family: var(--pp-font-body);
   text-decoration: none;
   color: var(--pp-color-accent);
-  background: rgba(0, 0, 0, 0);
+  background: none;
   border: 1px solid var(--pp-color-accent);
+}
+
+.header__link_accent:hover {
+  background-color: var(--pp-color-accent);
+  color: var(--pp-color-accent-ink);
 }
 
 @media screen and (max-width: 544px) {
