@@ -1,0 +1,9 @@
+.footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  font-family: var(--pp-font-mono);
+  font-size: 10px;
+  text-transform: uppercase;
+  color: var(--pp-color-text-tertiary);
+}
