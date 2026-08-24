@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 import Header from '../Header/Header';
 import Hero from '../Hero/Hero';
+import GamesGrid from '../GamesGrid/GamesGrid';
 
 function App() {
   return (
@@ -10,6 +11,7 @@ function App() {
         <Header></Header>
         <main>
           <Hero></Hero>
+          <GamesGrid></GamesGrid>
         </main>
       </div>
     </>

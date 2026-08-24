@@ -4,6 +4,10 @@
 *::after {
   box-sizing: border-box;
 }
+::selection {
+  background-color: var(--pp-color-accent);
+  color: var(--pp-color-accent-ink);
+}
 
 :root {
   /* Brand */
@@ -21,9 +25,9 @@
   --pp-color-popups: #0e0f13; /* modals, popovers */
   --pp-color-inputs: #131418; /* inputs, sunken elements */
   --pp-color-chip: #1a1b20; /* tags, pills */
+  --pp-color-surface: #0a0a0bb8;
 
   /* Borders */
-
   --pp-color-border: #191a1f; /* default card border */
   --pp-color-border-strong: #2a2c30; /* emphasized border, hover */
 

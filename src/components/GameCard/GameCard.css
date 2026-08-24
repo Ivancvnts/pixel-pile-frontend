@@ -1,0 +1,124 @@
+.gamecard {
+  width: 100%;
+  max-width: 300px;
+  border: 1px solid var(--pp-color-border);
+  border-radius: 16px;
+  overflow: hidden;
+}
+.gamecard__image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.gamecard__cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+}
+
+.gamecard__score {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  padding: 4px 10px;
+  border: 1px solid var(--pp-color-accent);
+  border-radius: 8px;
+  color: var(--pp-color-accent);
+  font-family: var(--pp-font-mono);
+  font-size: 13px;
+  font-weight: 600;
+  background-color: var(--pp-color-surface);
+}
+
+.gamecard__save-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 32px;
+  height: 32px;
+  background-color: var(--pp-color-surface);
+  border-radius: 8px;
+  border: 1px solid var(--pp-color-border);
+  color: var(--pp-color-text-primary);
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.gamecard__info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+  background-color: var(--pp-color-cards);
+  overflow: hidden;
+}
+
+.gamecard__release-date {
+  margin: 0;
+  font-family: var(--pp-font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--pp-color-text-tertiary);
+}
+
+.gamecard__name {
+  margin: 0;
+  font-family: var(--pp-font-heading);
+  font-size: 17px;
+  letter-spacing: 0.1em;
+  color: var(--pp-color-text-primary);
+}
+
+.gamecard__genres {
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+}
+
+.gamecard__genre {
+  margin: 0;
+  padding: 6px;
+  background-color: var(--pp-color-chip);
+  border-radius: 8px;
+  font-family: var(--pp-font-body);
+  font-size: 11px;
+  color: var(--pp-color-text-secondary);
+}
+
+.gamecard__footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--pp-color-border);
+  padding-top: 8px;
+}
+
+.gamecard__plattforms {
+  display: flex;
+  gap: 4px;
+}
+
+.gamecard__plattform {
+  margin: 0;
+  padding: 4px;
+  border: 1px solid var(--pp-color-border-strong);
+  border-radius: 8px;
+  font-family: var(--pp-font-mono);
+  font-size: 10px;
+  color: var(--pp-color-text-secondary);
+}
+
+.gamecard__rating {
+  margin: 0;
+  font-family: var(--pp-font-mono);
+  font-size: 11px;
+  color: var(--pp-color-accent);
+}

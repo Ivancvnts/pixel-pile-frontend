@@ -5,3 +5,5 @@
 @import url('./components/App/App.css');
 @import url('./components/Header/Header.css');
 @import url('./components/Hero/Hero.css');
+@import url('./components/GamesGrid/GamesGrid.css');
+@import url('./components/GameCard/GameCard.css');
