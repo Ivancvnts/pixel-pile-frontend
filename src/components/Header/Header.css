@@ -5,6 +5,11 @@
   color: var(--pp-color-text-primary);
   padding-top: 14px;
   padding-bottom: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(10, 10, 11, 0.86);
+  backdrop-filter: blur(14px);
 }
 
 .header__logo-container {
