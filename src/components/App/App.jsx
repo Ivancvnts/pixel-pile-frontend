@@ -1,8 +1,7 @@
 import { useState } from 'react';
 
 import Header from '../Header/Header';
-import Hero from '../Hero/Hero';
-import GamesGrid from '../GamesGrid/GamesGrid';
+import Main from '../Main/Main';
 import Footer from '../Footer/Footer';
 
 function App() {
@@ -10,10 +9,7 @@ function App() {
     <>
       <div className="app">
         <Header></Header>
-        <main>
-          <Hero></Hero>
-          <GamesGrid></GamesGrid>
-        </main>
+        <Main></Main>
         <Footer></Footer>
       </div>
     </>
