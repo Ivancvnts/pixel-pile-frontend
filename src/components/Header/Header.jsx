@@ -1,6 +1,6 @@
 import logo from '../../images/pixelpile-logo.svg';
 
-function Header(params) {
+function Header({ onPopupOpen }) {
   return (
     <header className="header app__section">
       <div className="header__logo-container">
@@ -13,9 +13,12 @@ function Header(params) {
         <a className="header__link" href="">
           Inicio
         </a>
-        <a className="header__link header__link_accent" href="">
+        <button
+          className="header__link header__link_accent"
+          onClick={() => onPopupOpen('login')}
+        >
           Iniciar Sesión
-        </a>
+        </button>
       </nav>
     </header>
   );

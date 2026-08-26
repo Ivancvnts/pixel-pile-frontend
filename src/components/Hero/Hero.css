@@ -6,19 +6,11 @@
   padding-bottom: 42px;
   gap: 16px;
   text-align: center;
-  background:
-    repeating-linear-gradient(
-      90deg,
-      rgba(255, 255, 255, 0.027) 0px,
-      rgba(255, 255, 255, 0.027) 1px,
-      transparent 1px,
-      transparent 44px
-    ),
-    radial-gradient(
-      120% 90% at 50% -10%,
-      rgb(23, 24, 27) 0%,
-      rgb(10, 10, 11) 62%
-    );
+  background: radial-gradient(
+    120% 90% at 50% 5%,
+    rgb(23, 24, 27) 0%,
+    rgb(10, 10, 11) 62%
+  );
 }
 
 .hero__api-reference {

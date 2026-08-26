@@ -9,3 +9,5 @@
 @import url('./components/GameCard/GameCard.css');
 @import url('./components/Footer/Footer.css');
 @import url('./components/About/About.css');
+@import url('./components/Popup/Popup.css');
+@import url('./components/Popup/AuthPopup/AuthPopup.css');

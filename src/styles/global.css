@@ -25,7 +25,7 @@
   --pp-color-popups: #0e0f13; /* modals, popovers */
   --pp-color-inputs: #131418; /* inputs, sunken elements */
   --pp-color-chip: #1a1b20; /* tags, pills */
-  --pp-color-surface: #0a0a0bb8;
+  --pp-color-surface: #0a0a0bb8; /* buttons */
 
   /* Borders */
   --pp-color-border: #191a1f; /* default card border */
