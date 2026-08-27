@@ -4,7 +4,13 @@
   border: 1px solid var(--pp-color-border);
   border-radius: 16px;
   overflow: hidden;
+  cursor: pointer;
 }
+
+.gamecard:hover {
+  border: 1px solid var(--pp-color-border-strong);
+}
+
 .gamecard__image {
   position: relative;
   width: 100%;
@@ -48,6 +54,11 @@
   color: var(--pp-color-text-primary);
   font-size: 18px;
   cursor: pointer;
+}
+
+.gamecard__save-btn:hover {
+  border-color: var(--pp-color-accent);
+  color: var(--pp-color-accent);
 }
 
 .gamecard__info {

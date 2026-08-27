@@ -1,6 +1,10 @@
+import { usePopup } from '../../contexts/PopupContext';
+
 function GameCard() {
+  const { onPopupOpen } = usePopup();
+
   return (
-    <div className="gamecard">
+    <div className="gamecard" onClick={() => onPopupOpen('game')}>
       <div className="gamecard__image">
         <img
           className="gamecard__cover"
@@ -25,7 +29,7 @@ function GameCard() {
             <span className="gamecard__plattform">XSX</span>
             <span className="gamecard__plattform">XB1</span>
           </div>
-          <p className="gamecard__rating">★ 4.7</p>
+          <span className="gamecard__rating">★ 4.7</span>
         </div>
       </div>
     </div>

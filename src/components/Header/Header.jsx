@@ -1,6 +1,9 @@
 import logo from '../../images/pixelpile-logo.svg';
+import { usePopup } from '../../contexts/PopupContext';
 
-function Header({ onPopupOpen }) {
+function Header() {
+  const { onPopupOpen } = usePopup();
+
   return (
     <header className="header app__section">
       <div className="header__logo-container">

@@ -1,0 +1,173 @@
+.game-detail {
+  max-width: 540px;
+  max-height: 540px;
+}
+
+.game-detail__cover {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  overflow: hidden;
+}
+
+.game-detail__image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.game-detail__image-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgb(14, 15, 19) 4%,
+    rgba(14, 15, 19, 0) 62%
+  );
+}
+
+.game-detail__body {
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.game-detail__meta-row {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.game-detail__score {
+  padding: 6px;
+  border: 1px solid var(--pp-color-accent);
+  border-radius: 6px;
+  color: var(--pp-color-accent);
+  font-family: var(--pp-font-mono);
+  font-size: 10px;
+  font-weight: 600;
+  background-color: var(--pp-color-surface);
+}
+
+.game-detail__rating {
+  font-family: var(--pp-font-mono);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--pp-color-accent);
+}
+
+.game-detail__date {
+  margin: 0;
+  font-family: var(--pp-font-mono);
+  font-size: 12px;
+  color: var(--pp-color-text-tertiary);
+}
+
+.game-detail__title {
+  margin: 0;
+  font-family: var(--pp-font-heading);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--pp-color-text-primary);
+}
+
+.game-detail__tag {
+  padding: 4px 10px;
+  border-radius: 6px;
+  background-color: var(--pp-color-chip);
+  font-family: var(--pp-font-body);
+  font-size: 12px;
+  color: var(--pp-color-text-secondary);
+}
+
+.game-detail__description {
+  margin: 0;
+  font-family: var(--pp-font-body);
+  font-size: 14px;
+  color: var(--pp-color-text-secondary);
+}
+
+.game-detail__stats {
+  padding: 8px;
+  display: flex;
+  flex-direction: row;
+  background-color: var(--pp-color-chip);
+  border: 1px solid var(--pp-color-border-strong);
+  border-radius: 12px;
+}
+
+.game-detail__stats-item {
+  flex: 1;
+  padding: 0 8px;
+  text-align: center;
+}
+
+.game-detail__stats-item:not(:last-child) {
+  border-right: 1px solid var(--pp-color-border-strong);
+}
+
+.game-detail__stats-label {
+  margin: 0 0 4px;
+  font-family: var(--pp-font-mono);
+  font-size: 9px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--pp-color-text-tertiary);
+}
+
+.game-detail__stats-value {
+  margin: 0;
+  font-family: var(--pp-font-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--pp-color-text-primary);
+}
+
+.game-detail__platforms {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 6px;
+}
+
+.game-detail__platform {
+  padding: 2px 8px;
+  border-radius: 6px;
+  background-color: var(--pp-color-surface);
+  font-family: var(--pp-font-mono);
+  font-size: 11px;
+  color: var(--pp-color-text-secondary);
+}
+
+.game-detail__actions {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 8px 0 16px;
+}
+
+.game-detail__action {
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  font-family: var(--pp-font-body);
+  font-weight: 500;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.game-detail__action_primary {
+  flex: 5;
+  background-color: var(--pp-color-accent);
+  color: var(--pp-color-accent-ink);
+}
+
+.game-detail__action_secondary {
+  flex: 1;
+  background-color: transparent;
+  border: 1px solid var(--pp-color-border-strong);
+  color: var(--pp-color-text-secondary);
+}

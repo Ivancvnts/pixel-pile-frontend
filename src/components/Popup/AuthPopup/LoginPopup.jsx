@@ -1,4 +1,8 @@
-function LoginPopup({ onSwitchPopup }) {
+import { usePopup } from '../../../contexts/PopupContext';
+
+function LoginPopup() {
+  const { onPopupOpen } = usePopup();
+
   return (
     <div className="auth-popup">
       <h3 className="auth-popup__title">Inicia sesión</h3>
@@ -31,7 +35,7 @@ function LoginPopup({ onSwitchPopup }) {
         <button
           type="button"
           className="auth-popup__switch"
-          onClick={() => onSwitchPopup('register')}
+          onClick={() => onPopupOpen('register')}
         >
           Registrate aquí
         </button>

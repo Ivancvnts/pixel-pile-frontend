@@ -9,6 +9,33 @@
   color: var(--pp-color-accent-ink);
 }
 
+html {
+  scrollbar-width: thin;
+  scrollbar-color: var(--pp-color-border-strong) transparent;
+}
+
+html::-webkit-scrollbar {
+  width: 8px;
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html::-webkit-scrollbar-thumb {
+  background-color: var(--pp-color-border-strong);
+  border-radius: 999px;
+}
+
+html::-webkit-scrollbar-thumb:hover {
+  background-color: var(--pp-color-accent);
+}
+
+html,
+body {
+  background-color: var(--pp-color-bg);
+}
+
 :root {
   /* Brand */
   --pp-color-accent: #b6ff2e; /* neon green, primary CTA */

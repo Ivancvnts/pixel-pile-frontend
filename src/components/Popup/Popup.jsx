@@ -1,29 +1,32 @@
 import { useEffect } from 'react';
+import { usePopup } from '../../contexts/PopupContext';
 
-function Popup({ onClosePopup, children }) {
+function Popup({ children }) {
+  const { onPopupClose } = usePopup();
+
   useEffect(() => {
     document.body.style.overflow = 'hidden';
     document.addEventListener('keydown', handleEscape);
 
     function handleEscape(e) {
       if (e.key === 'Escape') {
-        onClosePopup();
+        onPopupClose();
       }
     }
     return () => {
       document.body.style.overflow = '';
       document.removeEventListener('keydown', handleEscape);
     };
-  }, [onClosePopup]);
+  }, [onPopupClose]);
 
   return (
-    <div className="popup" onClick={onClosePopup}>
+    <div className="popup" onClick={onPopupClose}>
       <div className="popup__content" onClick={(e) => e.stopPropagation()}>
         <button
           className="popup__close-btn"
           aria-label="Cerrar ventana emergente"
           type="button"
-          onClick={onClosePopup}
+          onClick={onPopupClose}
         >
           &times;
         </button>
