@@ -91,22 +91,34 @@
 }
 
 .game-detail__stats {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'developer duration'
+    'platforms platforms';
+  row-gap: 12px; /* solo separación vertical */
+  column-gap: 0; /* sin espacio horizontal entre developer/duration */
   padding: 8px;
-  display: flex;
-  flex-direction: row;
   background-color: var(--pp-color-chip);
   border: 1px solid var(--pp-color-border-strong);
   border-radius: 12px;
-}
-
-.game-detail__stats-item {
-  flex: 1;
-  padding: 0 8px;
+  justify-items: stretch;
   text-align: center;
 }
 
-.game-detail__stats-item:not(:last-child) {
+.game-detail__stats-item_developer {
+  grid-area: developer;
   border-right: 1px solid var(--pp-color-border-strong);
+}
+
+.game-detail__stats-item_duration {
+  grid-area: duration;
+}
+
+.game-detail__stats-item_platforms {
+  grid-area: platforms;
+  padding-top: 12px;
+  border-top: 1px solid var(--pp-color-border-strong);
 }
 
 .game-detail__stats-label {

@@ -1,35 +1,60 @@
 import { usePopup } from '../../contexts/PopupContext';
 
-function GameCard() {
+const MAX_VISIBLE_PLATFORMS = 2;
+
+function GameCard({ game }) {
   const { onPopupOpen } = usePopup();
 
+  const platforms = game.platforms || [];
+  const visiblePlatforms = platforms.slice(0, MAX_VISIBLE_PLATFORMS);
+  const remainingCount = platforms.length - MAX_VISIBLE_PLATFORMS;
+
+  function handleSaveGame(e) {
+    e.stopPropagation();
+    onPopupOpen('login');
+  }
+
   return (
-    <div className="gamecard" onClick={() => onPopupOpen('game')}>
+    <div className="gamecard" onClick={() => onPopupOpen('game', game.id)}>
       <div className="gamecard__image">
         <img
           className="gamecard__cover"
-          src="https://media.rawg.io/media/crop/600/400/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg"
-          alt=""
+          src={game.background_image}
+          alt={`Portada de ${game.name}`}
         />
-        <span className="gamecard__score">92</span>
-        <button className="gamecard__save-btn" type="button">
+        {game.metacritic && (
+          <span className="gamecard__score">{game.metacritic}</span>
+        )}
+        <button
+          className="gamecard__save-btn"
+          type="button"
+          onClick={handleSaveGame}
+        >
           +
         </button>
       </div>
       <div className="gamecard__info">
-        <p className="gamecard__release-date">04 ABR 2026</p>
-        <h1 className="gamecard__name">Halo Infinite</h1>
+        <p className="gamecard__release-date">{game.released}</p>
+        <h3 className="gamecard__name">{game.name}</h3>
         <div className="gamecard__genres">
-          <span className="gamecard__genre">Shooter</span>
-          <span className="gamecard__genre">Ciencia ficción</span>
+          {game.genres.map((genre) => (
+            <span className="gamecard__genre" key={genre.id}>
+              {genre.name}
+            </span>
+          ))}
         </div>
         <div className="gamecard__footer">
-          <div className="gamecard__plattforms">
-            <span className="gamecard__plattform">PC</span>
-            <span className="gamecard__plattform">XSX</span>
-            <span className="gamecard__plattform">XB1</span>
+          <div className="gamecard__platforms">
+            {visiblePlatforms.map((p) => (
+              <span className="gamecard__platform" key={p.platform.id}>
+                {p.platform.name}
+              </span>
+            ))}
+            {remainingCount > 0 && (
+              <span className="gamecard__platform">+{remainingCount}</span>
+            )}
           </div>
-          <span className="gamecard__rating">★ 4.7</span>
+          <span className="gamecard__rating">{`★ ${game.rating}`}</span>
         </div>
       </div>
     </div>

@@ -1,56 +1,74 @@
+import { useState, useEffect } from 'react';
+
 import { usePopup } from '../../../contexts/PopupContext';
+import { getGameDetails } from '../../../utils/RAWGApi';
 
-function GameDetail() {
-  const { onPopupClose } = usePopup();
+function GameDetail({ gameId }) {
+  const { onPopupOpen, onPopupClose } = usePopup();
+  const [game, setGame] = useState(null);
 
+  useEffect(() => {
+    getGameDetails(gameId)
+      .then((data) => setGame(data))
+      .catch((err) => console.error(err));
+  }, [gameId]);
+
+  if (!game) {
+    return <div className="game-detail">Cargando...</div>;
+  }
   return (
     <div className="game-detail">
       <div className="game-detail__cover">
         <img
           className="game-detail__image"
-          src="https://media.rawg.io/media/crop/600/400/games/e1f/e1ffbeb1bac25b19749ad285ca29e158.jpg"
-          alt="Arte principal de Halo Infinite"
+          src={game.background_image}
+          alt={`Portada de ${game.name}`}
         />
         <div className="game-detail__image-overlay"></div>
       </div>
 
       <div className="game-detail__body">
         <div className="game-detail__meta-row">
-          <span className="game-detail__score">92</span>
-          <span className="game-detail__rating">★ 4.7</span>
-          <p className="game-detail__date">04 ABR 2026</p>
+          {game.metacritic && (
+            <span className="gamecard__score">{game.metacritic}</span>
+          )}
+          <span className="game-detail__rating">{`★ ${game.rating}`}</span>
+          <p className="game-detail__date">{game.released}</p>
         </div>
 
-        <h1 className="game-detail__title">Halo Infinite</h1>
+        <h1 className="game-detail__title">{game.name}</h1>
 
         <div className="game-detail__meta-row">
-          <span className="game-detail__tag">Shooter</span>
-          <span className="game-detail__tag">Ciencia ficción</span>
+          {game.genres.map((genre) => (
+            <span className="gamecard__genre" key={genre.id}>
+              {genre.name}
+            </span>
+          ))}
         </div>
 
-        <p className="game-detail__description">
-          El Jefe Maestro vuelve a Zeta Halo con gancho de agarre y mundo
-          semiabierto. El mejor gunplay de la saga en años, con multijugador
-          gratuito.
-        </p>
+        <p className="game-detail__description">{game.description_raw}</p>
 
         <div className="game-detail__stats">
-          <div className="game-detail__stats-item">
+          <div className="game-detail__stats-item game-detail__stats-item_developer">
             <p className="game-detail__stats-label">Desarrolladora</p>
-            <p className="game-detail__stats-value">343 Industries</p>
+            <p className="game-detail__stats-value">
+              {game.developers?.[0]?.name || 'Desconocido'}
+            </p>
           </div>
 
-          <div className="game-detail__stats-item">
+          <div className="game-detail__stats-item game-detail__stats-item_duration">
             <p className="game-detail__stats-label">Duración media</p>
-            <p className="game-detail__stats-value">26 h</p>
+            <p className="game-detail__stats-value">{game.playtime} h</p>
           </div>
 
-          <div className="game-detail__stats-item">
+          <div className="game-detail__stats-item game-detail__stats-item_platforms">
             <p className="game-detail__stats-label">Plataformas</p>
             <div className="game-detail__platforms">
-              <span className="game-detail__platform">PC</span>
-              <span className="game-detail__platform">XSX</span>
-              <span className="game-detail__platform">XB1</span>
+              {game.parent_platforms?.map((p) => (
+                <span key={p.platform.id} className="game-detail__platform">
+                  {p.platform.name}
+                </span>
+              ))}
             </div>
           </div>
         </div>
@@ -59,6 +77,7 @@ function GameDetail() {
           <button
             className="game-detail__action game-detail__action_primary"
             type="button"
+            onClick={() => onPopupOpen('login')}
           >
             Inicia sesión para guardar
           </button>

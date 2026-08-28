@@ -5,6 +5,9 @@
   border-radius: 16px;
   overflow: hidden;
   cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .gamecard:hover {
@@ -62,6 +65,7 @@
 }
 
 .gamecard__info {
+  flex: 1;
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -104,6 +108,7 @@
 }
 
 .gamecard__footer {
+  margin-top: auto;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -112,12 +117,13 @@
   padding-top: 8px;
 }
 
-.gamecard__plattforms {
+.gamecard__platforms {
   display: flex;
+  flex-wrap: wrap;
   gap: 4px;
 }
 
-.gamecard__plattform {
+.gamecard__platform {
   margin: 0;
   padding: 4px;
   border: 1px solid var(--pp-color-border-strong);

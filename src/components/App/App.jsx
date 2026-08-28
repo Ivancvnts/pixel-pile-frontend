@@ -13,9 +13,9 @@ function App() {
   const [popup, setPopup] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
 
-  function handleOpenPopup(popup, game = null) {
+  function handleOpenPopup(popup, gameId = null) {
     setPopup(popup);
-    if (game) setSelectedGame(game);
+    if (gameId) setSelectedGame(gameId);
   }
 
   function handleClosePopup() {
@@ -26,7 +26,7 @@ function App() {
   const popups = {
     login: <LoginPopup />,
     register: <RegisterPopup />,
-    game: <GameDetail game={selectedGame} />,
+    game: <GameDetail gameId={selectedGame} />,
   };
 
   return (
