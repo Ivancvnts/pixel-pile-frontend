@@ -1,7 +1,15 @@
 import { useState } from 'react';
 
+import { searchGames } from '../../utils/RAWGApi';
+
 function Hero() {
   const [query, setQuery] = useState('');
+
+  function handleSearchSubmit(e) {
+    e.preventDefault();
+    
+  }
+
   return (
     <section className="hero app__section">
       <a
