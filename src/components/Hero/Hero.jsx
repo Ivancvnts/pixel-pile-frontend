@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
-import { searchGames } from '../../utils/RAWGApi';
-
-function Hero() {
+function Hero({ onSearch }) {
   const [query, setQuery] = useState('');
-
+  
   function handleSearchSubmit(e) {
     e.preventDefault();
-    
+    const submitter = e.nativeEvent.submitter;
+    const searchTerm = submitter?.value || query;
+    onSearch(searchTerm);
   }
 
   return (
@@ -23,7 +23,7 @@ function Hero() {
         Busca entre miles de títulos, revisa notas y plataformas, y guarda los
         que quieras jugar en tu pila personal.
       </p>
-      <form className="hero__form" action="" id="search" name="search">
+      <form className="hero__form" action="" id="search" name="search" onSubmit={handleSearchSubmit}>
         <div className="hero__search-container">
           <div className="hero__searchbar">
             <span className="hero__search-decoration">{'>'}</span>
