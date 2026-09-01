@@ -15,17 +15,18 @@ function Main() {
     getFeaturedGames()
       .then((data) => {
         setGames(data.results);
-        setIsLoading(true);
       })
       .catch((err) => console.error(err))
       .finally(() => setIsLoading(false));
   }, []);
 
   function handleSearch(filters) {
+    setIsLoading(true);
     searchGames(filters)
       .then((data) => {
         setGames(data.results);
         setHasSearched(true);
+        setIsLoading(false);
       })
       .catch((err) => console.error(err));
   }

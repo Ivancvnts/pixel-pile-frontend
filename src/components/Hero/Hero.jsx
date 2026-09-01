@@ -21,7 +21,7 @@ function Hero({ onSearch }) {
       >
         BASE DE DATOS · RAWG
       </a>
-      <h1 className="hero__title">Apila los juegos que sí importan</h1>
+      <h1 className="hero__title">Stackea los juegos que sí importan</h1>
       <p className="hero__description">
         Busca entre miles de títulos, revisa notas y plataformas, y guarda los
         que quieras jugar en tu pila personal.
@@ -57,14 +57,14 @@ function Hero({ onSearch }) {
             type="button"
             onClick={() => handleChipClick({ genres: 'action' })}
           >
-            Action
+            Acción
           </button>
           <button
             className="hero__tag"
             type="button"
             onClick={() => handleChipClick({ genres: 'adventure' })}
           >
-            Adventure
+            Aventura
           </button>
           <button
             className="hero__tag"

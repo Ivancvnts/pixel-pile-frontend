@@ -9,14 +9,19 @@ function GamesGrid({ games, hasSearched, isLoading }) {
           {hasSearched ? 'Resultados' : 'Destacados'}
         </h1>
         <p className="gamesgrid__description">
-          Antes de buscar, empieza por lo que más se está jugando ahora.
+          {hasSearched
+            ? ''
+            : 'Antes de buscar, empieza por lo que más se está jugando ahora.'}
         </p>
-        {isLoading && <Loader></Loader>}
-        <div className="gamesgrid__grid">
-          {games.map((game) => (
-            <GameCard key={game.id} game={game}></GameCard>
-          ))}
-        </div>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <div className="gamesgrid__grid">
+            {games.map((game) => (
+              <GameCard key={game.id} game={game} />
+            ))}
+          </div>
+        )}
       </div>
     </section>
   );
