@@ -1,13 +1,16 @@
 import { useState } from 'react';
+//TODO (NICE TO HAVE): Replace the current chips to use them as filter to search by name, genre, developer, rating, metacritic
 
 function Hero({ onSearch }) {
   const [query, setQuery] = useState('');
-  
+
   function handleSearchSubmit(e) {
     e.preventDefault();
-    const submitter = e.nativeEvent.submitter;
-    const searchTerm = submitter?.value || query;
-    onSearch(searchTerm);
+    onSearch({ search: query });
+  }
+
+  function handleChipClick(filters) {
+    onSearch(filters);
   }
 
   return (
@@ -23,7 +26,13 @@ function Hero({ onSearch }) {
         Busca entre miles de títulos, revisa notas y plataformas, y guarda los
         que quieras jugar en tu pila personal.
       </p>
-      <form className="hero__form" action="" id="search" name="search" onSubmit={handleSearchSubmit}>
+      <form
+        className="hero__form"
+        action=""
+        id="search"
+        name="search"
+        onSubmit={handleSearchSubmit}
+      >
         <div className="hero__search-container">
           <div className="hero__searchbar">
             <span className="hero__search-decoration">{'>'}</span>
@@ -43,19 +52,41 @@ function Hero({ onSearch }) {
         </div>
 
         <div className="hero__tags">
-          <button className="hero__tag" type="submit" value="Roguelike">
-            Roguelike
+          <button
+            className="hero__tag"
+            type="button"
+            onClick={() => handleChipClick({ genres: 'action' })}
+          >
+            Action
           </button>
-          <button className="hero__tag" type="submit" value="RPG">
-            RPG
+          <button
+            className="hero__tag"
+            type="button"
+            onClick={() => handleChipClick({ genres: 'adventure' })}
+          >
+            Adventure
           </button>
-          <button className="hero__tag" type="submit" value="Indie">
+          <button
+            className="hero__tag"
+            type="button"
+            onClick={() => handleChipClick({ genres: 'indie' })}
+          >
             Indie
           </button>
-          <button className="hero__tag" type="submit" value="Rockstar">
+          <button
+            className="hero__tag"
+            type="button"
+            onClick={() => handleChipClick({ developers: 'rockstar-games' })}
+          >
             Rockstar
           </button>
-          <button className="hero__tag" type="submit" value="Metactritic 95+">
+          <button
+            className="hero__tag"
+            type="button"
+            onClick={() =>
+              handleChipClick({ metacritic: '95,100', ordering: '-metacritic' })
+            }
+          >
             Metacritic 95+
           </button>
         </div>

@@ -97,6 +97,15 @@
   color: var(--pp-color-text-primary);
 }
 
+.hero__search-input:-webkit-autofill,
+.hero__search-input:-webkit-autofill:hover,
+.hero__search-input:-webkit-autofill:focus,
+.hero__search-input:-webkit-autofill:active {
+  -webkit-box-shadow: 0 0 0 1000px var(--pp-color-inputs) inset !important;
+  -webkit-text-fill-color: var(--pp-color-text-primary) !important;
+  transition: background-color 5000s ease-in-out 0s; /* truco para evitar el flash del fondo blanco */
+}
+
 .hero__search-button {
   margin: 0;
   padding: 15px 28px;

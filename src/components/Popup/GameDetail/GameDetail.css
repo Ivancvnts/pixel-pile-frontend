@@ -3,6 +3,14 @@
   max-height: 540px;
 }
 
+.game-detail__loader {
+  min-width: 300px;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .game-detail__cover {
   position: relative;
   width: 100%;

@@ -28,7 +28,7 @@ export function getGameDetails(id) {
   return fetch(url).then((res) => res.json());
 }
 
-export function searchGames(query) {
-  const url = buildUrl(`/games`,{search: query, page_size: 8});
-  return fetch(url).then((res) => res.json()); 
+export function searchGames(filters) {
+  const url = buildUrl(`/games`, { page_size: 8, ...filters });
+  return fetch(url).then((res) => res.json());
 }

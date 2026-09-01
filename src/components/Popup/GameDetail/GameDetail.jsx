@@ -3,18 +3,26 @@ import { useState, useEffect } from 'react';
 import { usePopup } from '../../../contexts/PopupContext';
 import { getGameDetails } from '../../../utils/RAWGApi';
 
+import Loader from '../../Loader/Loader';
+
 function GameDetail({ gameId }) {
   const { onPopupOpen, onPopupClose } = usePopup();
   const [game, setGame] = useState(null);
 
   useEffect(() => {
     getGameDetails(gameId)
-      .then((data) => setGame(data))
+      .then((data) => {
+        setGame(data);
+      })
       .catch((err) => console.error(err));
   }, [gameId]);
 
   if (!game) {
-    return <div className="game-detail">Cargando...</div>;
+    return (
+      <div className="game-detail__loader">
+        <Loader></Loader>
+      </div>
+    );
   }
   return (
     <div className="game-detail">
@@ -36,7 +44,7 @@ function GameDetail({ gameId }) {
           <p className="game-detail__date">{game.released}</p>
         </div>
 
-        <h1 className="game-detail__title">{game.name}</h1>
+        <h2 className="game-detail__title">{game.name}</h2>
 
         <div className="game-detail__meta-row">
           {game.genres.map((genre) => (
