@@ -1,8 +1,10 @@
 import logo from '../../images/pixelpile-logo.svg';
 import { usePopup } from '../../contexts/PopupContext';
+import { useUser } from '../../contexts/UserContext';
 
 function Header() {
   const { onPopupOpen } = usePopup();
+  const { isLoggedIn, currentUser, onLogout } = useUser();
 
   return (
     <header className="header app__section">
@@ -16,12 +18,29 @@ function Header() {
         <a className="header__link" href="">
           Inicio
         </a>
-        <button
-          className="header__link header__link_accent"
-          onClick={() => onPopupOpen('login')}
-        >
-          Iniciar Sesión
-        </button>
+        {isLoggedIn ? (
+          <>
+            <a className="header__link" href="#">
+              Mi lista{' '}
+              <span className="header__chip">{currentUser.games.length}</span>
+            </a>
+            <button
+              className="header__link header__link_accent"
+              type="button"
+              onClick={onLogout}
+            >
+              Cerrar sesión
+            </button>
+          </>
+        ) : (
+          <button
+            className="header__link header__link_accent"
+            type="button"
+            onClick={() => onPopupOpen('login')}
+          >
+            Iniciar Sesión
+          </button>
+        )}
       </nav>
     </header>
   );

@@ -1,5 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { PopupContext } from '../../contexts/PopupContext';
+import { UserContext } from '../../contexts/UserContext';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -12,6 +13,14 @@ import GameDetail from '../Popup/GameDetail/GameDetail';
 function App() {
   const [popup, setPopup] = useState(null);
   const [selectedGame, setSelectedGame] = useState(null);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [currentUser, setCurrentUser] = useState(null);
+
+  const popups = {
+    login: <LoginPopup />,
+    register: <RegisterPopup />,
+    game: <GameDetail gameId={selectedGame} />,
+  };
 
   function handleOpenPopup(popup, gameId = null) {
     setPopup(popup);
@@ -23,24 +32,56 @@ function App() {
     setSelectedGame(null);
   }
 
-  const popups = {
-    login: <LoginPopup />,
-    register: <RegisterPopup />,
-    game: <GameDetail gameId={selectedGame} />,
-  };
+  function handleRegistration(userData) {
+    setCurrentUser(userData);
+    setIsLoggedIn(true);
+    handleClosePopup();
+  }
+
+  function handleLogin(userData) {
+    setCurrentUser(userData);
+    setIsLoggedIn(true);
+    handleClosePopup();
+  }
+
+  function handleLogout() {
+    setCurrentUser(null);
+    setIsLoggedIn(false);
+  }
+
+  function handleSaveGame(game) {
+    setCurrentUser((prevUser) => ({
+      ...prevUser,
+      games: [game, ...prevUser.games],
+    }));
+  }
 
   return (
     <>
-      <PopupContext.Provider
-        value={{ onPopupOpen: handleOpenPopup, onPopupClose: handleClosePopup }}
+      <UserContext.Provider
+        value={{
+          isLoggedIn,
+          currentUser,
+          onLogin: handleLogin,
+          onRegistration: handleRegistration,
+          onLogout: handleLogout,
+          onGameSaved: handleSaveGame,
+        }}
       >
-        <div className="app">
-          <Header></Header>
-          <Main></Main>
-          <Footer></Footer>
-          {popup && <Popup>{popups[popup]}</Popup>}
-        </div>
-      </PopupContext.Provider>
+        <PopupContext.Provider
+          value={{
+            onPopupOpen: handleOpenPopup,
+            onPopupClose: handleClosePopup,
+          }}
+        >
+          <div className="app">
+            <Header></Header>
+            <Main></Main>
+            <Footer></Footer>
+            {popup && <Popup>{popups[popup]}</Popup>}
+          </div>
+        </PopupContext.Provider>
+      </UserContext.Provider>
     </>
   );
 }
