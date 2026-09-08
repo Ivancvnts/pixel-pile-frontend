@@ -1,13 +1,18 @@
 import { useState, useEffect } from 'react';
 
 import { usePopup } from '../../../contexts/PopupContext';
+import { useUser } from '../../../contexts/UserContext';
 import { getGameDetails } from '../../../utils/RAWGApi';
 
 import Loader from '../../Loader/Loader';
 
 function GameDetail({ gameId }) {
   const { onPopupOpen, onPopupClose } = usePopup();
+  const { currentUser, isLoggedIn, onGameSaved } = useUser();
+
   const [game, setGame] = useState(null);
+
+  const isGameSaved = currentUser?.games?.some((g) => g.id === gameId);
 
   useEffect(() => {
     getGameDetails(gameId)
@@ -24,6 +29,17 @@ function GameDetail({ gameId }) {
       </div>
     );
   }
+
+  function handleSaveGame() {
+    if (!isLoggedIn) {
+      onPopupOpen('login');
+      return;
+    }
+
+    onGameSaved(game);
+    onPopupClose();
+  }
+
   return (
     <div className="game-detail">
       <div className="game-detail__cover">
@@ -85,9 +101,9 @@ function GameDetail({ gameId }) {
           <button
             className="game-detail__action game-detail__action_primary"
             type="button"
-            onClick={() => onPopupOpen('login')}
+            onClick={() => handleSaveGame()}
           >
-            Inicia sesión para guardar
+            {isLoggedIn ? 'Guardar' : 'Inicia sesión para guardar'}
           </button>
           <button
             className="game-detail__action game-detail__action_secondary"

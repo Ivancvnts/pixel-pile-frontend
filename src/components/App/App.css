@@ -1,8 +1,16 @@
 .app {
   background-color: var(--pp-color-bg);
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.app__content {
+  flex: 1; /* toma todo el espacio sobrante entre Header y Footer */
+  display: flex;
+  flex-direction: column;
 }
 
 .app__section {
@@ -10,4 +18,8 @@
   padding: 0 14px;
   box-sizing: border-box;
   border-bottom: 1px solid rgb(30, 31, 34);
+}
+
+.app__section_no-border {
+  border: none;
 }

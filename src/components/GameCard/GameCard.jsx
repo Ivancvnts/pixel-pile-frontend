@@ -1,9 +1,11 @@
 import { usePopup } from '../../contexts/PopupContext';
+import { useUser } from '../../contexts/UserContext';
 
 const MAX_VISIBLE_PLATFORMS = 2;
 
 function GameCard({ game }) {
   const { onPopupOpen } = usePopup();
+  const { isLoggedIn, onGameSaved } = useUser();
 
   const platforms = game.platforms || [];
   const visiblePlatforms = platforms.slice(0, MAX_VISIBLE_PLATFORMS);
@@ -11,7 +13,13 @@ function GameCard({ game }) {
 
   function handleSaveGame(e) {
     e.stopPropagation();
-    onPopupOpen('login');
+
+    if (!isLoggedIn) {
+      onPopupOpen('login');
+      return;
+    }
+
+    onGameSaved(game);
   }
 
   return (

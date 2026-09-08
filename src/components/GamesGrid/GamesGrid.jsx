@@ -1,17 +1,17 @@
 import GameCard from '../GameCard/GameCard';
 import Loader from '../Loader/Loader';
 
-function GamesGrid({ games, hasSearched, isLoading }) {
+function GamesGrid({ games, title, description, isLoading, noBorder = false }) {
   return (
-    <section className="gamesgrid app__section">
+    <section
+      className={`gamesgrid app__section ${noBorder ? 'app__section_no-border' : ''}`}
+    >
       <div className="gamesgrid__container">
-        <h1 className="gamesgrid__title">
-          {hasSearched ? 'Resultados' : 'Destacados'}
-        </h1>
+        <h2 className="gamesgrid__title">{title}</h2>
         <p className="gamesgrid__description">
-          {hasSearched
-            ? ''
-            : 'Antes de buscar, empieza por lo que más se está jugando ahora.'}
+          {!isLoading && games.length === 0
+            ? 'No se ha encontrado ningún juego'
+            : description}
         </p>
         {isLoading ? (
           <Loader />

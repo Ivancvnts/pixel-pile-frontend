@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import { PopupContext } from '../../contexts/PopupContext';
 import { UserContext } from '../../contexts/UserContext';
 
 import Header from '../Header/Header';
 import Main from '../Main/Main';
+import SavedGames from '../SavedGames/SavedGames';
 import Footer from '../Footer/Footer';
 import Popup from '../Popup/Popup';
 import LoginPopup from '../Popup/AuthPopup/LoginPopup';
@@ -41,6 +43,7 @@ function App() {
   function handleLogin(userData) {
     setCurrentUser(userData);
     setIsLoggedIn(true);
+
     handleClosePopup();
   }
 
@@ -76,7 +79,12 @@ function App() {
         >
           <div className="app">
             <Header></Header>
-            <Main></Main>
+            <div className="app__content">
+              <Routes>
+                <Route path="/" element={<Main />}></Route>
+                <Route path="/saved-games" element={<SavedGames />}></Route>
+              </Routes>
+            </div>
             <Footer></Footer>
             {popup && <Popup>{popups[popup]}</Popup>}
           </div>

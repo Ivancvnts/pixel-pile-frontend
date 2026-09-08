@@ -36,7 +36,8 @@ function Main() {
       <Hero onSearch={handleSearch}></Hero>
       <GamesGrid
         games={games}
-        hasSearched={hasSearched}
+        title={`${hasSearched ? 'Resultados' : 'Destacados'}`}
+        description={`${hasSearched ? '' : 'Antes de buscar, empieza por lo que más se está jugando ahora.'}`}
         isLoading={isLoading}
       ></GamesGrid>
       <About></About>

@@ -2,7 +2,7 @@ import authorPhoto from '../../images/IvanCvnts.jpg';
 
 function About() {
   return (
-    <section className="app__section">
+    <section className="app__section app__section_no-border">
       <div className="about">
         <div
           className="about__avatar"
