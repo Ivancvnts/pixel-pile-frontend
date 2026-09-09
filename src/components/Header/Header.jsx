@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import logo from '../../images/pixelpile-logo.svg';
 import { usePopup } from '../../contexts/PopupContext';
 import { useUser } from '../../contexts/UserContext';
@@ -15,15 +17,15 @@ function Header() {
         </p>
       </div>
       <nav className="header__links-container">
-        <a className="header__link" href="">
+        <Link className="header__link" to="/">
           Inicio
-        </a>
+        </Link>
         {isLoggedIn ? (
           <>
-            <a className="header__link" href="#">
-              Mi lista{' '}
+            <Link className="header__link" to="/saved-games">
+              Mi lista{'  '}
               <span className="header__chip">{currentUser.games.length}</span>
-            </a>
+            </Link>
             <button
               className="header__link header__link_accent"
               type="button"

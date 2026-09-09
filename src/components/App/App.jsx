@@ -59,6 +59,13 @@ function App() {
     }));
   }
 
+  function handleDeleteGame(gameId) {
+    setCurrentUser((prevUser) => ({
+      ...prevUser,
+      games: prevUser.games.filter((g) => g.id !== gameId),
+    }));
+  }
+
   return (
     <>
       <UserContext.Provider
@@ -69,6 +76,7 @@ function App() {
           onRegistration: handleRegistration,
           onLogout: handleLogout,
           onGameSaved: handleSaveGame,
+          onGameDeleted: handleDeleteGame,
         }}
       >
         <PopupContext.Provider

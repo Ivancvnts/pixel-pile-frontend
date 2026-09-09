@@ -5,13 +5,14 @@ const MAX_VISIBLE_PLATFORMS = 2;
 
 function GameCard({ game }) {
   const { onPopupOpen } = usePopup();
-  const { isLoggedIn, onGameSaved } = useUser();
+  const { currentUser, isLoggedIn, onGameSaved, onGameDeleted } = useUser();
 
   const platforms = game.platforms || [];
   const visiblePlatforms = platforms.slice(0, MAX_VISIBLE_PLATFORMS);
   const remainingCount = platforms.length - MAX_VISIBLE_PLATFORMS;
+  const isGameSaved = currentUser?.games?.some((g) => g.id === game.id);
 
-  function handleSaveGame(e) {
+  function handleToggleSave(e) {
     e.stopPropagation();
 
     if (!isLoggedIn) {
@@ -19,7 +20,11 @@ function GameCard({ game }) {
       return;
     }
 
-    onGameSaved(game);
+    if (isGameSaved) {
+      onGameDeleted(game.id);
+    } else {
+      onGameSaved(game);
+    }
   }
 
   return (
@@ -36,9 +41,10 @@ function GameCard({ game }) {
         <button
           className="gamecard__save-btn"
           type="button"
-          onClick={handleSaveGame}
+          onClick={handleToggleSave}
+          aria-label={isGameSaved ? 'Quitar de mi lista' : 'Agregar a mi lista'}
         >
-          +
+          {isGameSaved ? '−' : '+'}
         </button>
       </div>
       <div className="gamecard__info">
