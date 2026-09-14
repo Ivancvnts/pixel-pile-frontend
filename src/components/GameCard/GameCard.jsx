@@ -51,7 +51,7 @@ function GameCard({ game }) {
         <p className="gamecard__release-date">{game.released}</p>
         <h3 className="gamecard__name">{game.name}</h3>
         <div className="gamecard__genres">
-          {game.genres.map((genre) => (
+          {game.genres?.map((genre) => (
             <span className="gamecard__genre" key={genre.id}>
               {genre.name}
             </span>
