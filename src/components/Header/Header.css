@@ -76,6 +76,15 @@
   color: var(--pp-color-accent-ink);
 }
 
+.header__menu-toggle {
+  display: none; /* oculto en desktop */
+  background: none;
+  border: none;
+  color: var(--pp-color-accent);
+  font-size: 24px;
+  cursor: pointer;
+}
+
 @media screen and (max-width: 544px) {
   .header__icon {
     max-width: 28px;
@@ -88,5 +97,26 @@
   .header__link {
     padding: 8px 11px;
     font-size: 12px;
+  }
+
+  .header__menu-toggle {
+    display: block;
+  }
+
+  .header__links-container {
+    display: none; /* oculto por default en mobile */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: var(--pp-color-bg);
+    padding: 16px;
+    border-top: 1px solid var(--pp-color-border);
+  }
+
+  .header__links-container_open {
+    display: flex; /* se muestra solo cuando isMenuOpen es true */
   }
 }
