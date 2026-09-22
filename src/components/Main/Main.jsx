@@ -34,6 +34,7 @@ function Main() {
         setHasSearched(true);
         setIsLoading(false);
         setTotalCount(data.count);
+        setActiveFilters(filters);
       })
       .catch((err) => console.error(err));
   }
@@ -42,7 +43,7 @@ function Main() {
     setIsLoadingMore(true);
     const nextPage = Math.floor(games.length / 4) + 1;
 
-    const request = setActiveFilters
+    const request = activeFilters
       ? searchGames(activeFilters, nextPage, 4)
       : getFeaturedGames(nextPage, 4);
 
