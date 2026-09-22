@@ -8,7 +8,7 @@ import Loader from '../../Loader/Loader';
 
 function GameDetail({ gameId }) {
   const { onPopupOpen, onPopupClose } = usePopup();
-  const { currentUser, isLoggedIn, onGameSaved } = useUser();
+  const { currentUser, isLoggedIn, onGameSaved, onGameDeleted } = useUser();
 
   const [game, setGame] = useState(null);
 
@@ -30,14 +30,17 @@ function GameDetail({ gameId }) {
     );
   }
 
-  function handleSaveGame() {
+  function handleToggleSave() {
     if (!isLoggedIn) {
       onPopupOpen('login');
       return;
     }
 
-    onGameSaved(game);
-    onPopupClose();
+    if (isGameSaved) {
+      onGameDeleted(game.id);
+    } else {
+      onGameSaved(game);
+    }
   }
 
   return (
@@ -101,9 +104,13 @@ function GameDetail({ gameId }) {
           <button
             className="game-detail__action game-detail__action_primary"
             type="button"
-            onClick={() => handleSaveGame()}
+            onClick={() => handleToggleSave()}
           >
-            {isLoggedIn ? 'Guardar' : 'Inicia sesión para guardar'}
+            {!isLoggedIn
+              ? 'Inicia sesión para guardar'
+              : isGameSaved
+                ? 'Quitar de mi lista'
+                : 'Guardar'}
           </button>
           <button
             className="game-detail__action game-detail__action_secondary"

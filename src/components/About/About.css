@@ -45,7 +45,7 @@
   color: var(--pp-color-text-tertiary);
 }
 
-@media screen and (max-width: 544px) {
+@media screen and (max-width: 800px) {
   .about {
     flex-direction: column;
     justify-content: center;
