@@ -59,3 +59,18 @@
     align-self: center;
   }
 }
+
+@media screen and (max-width: 350px) {
+  .about {
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .about__avatar {
+    flex: 0 0 200px;
+    width: 200px;
+    height: 200px;
+    align-self: center;
+  }
+}
