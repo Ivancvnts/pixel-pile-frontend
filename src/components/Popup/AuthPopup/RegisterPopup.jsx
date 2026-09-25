@@ -68,7 +68,16 @@ function RegisterPopup() {
       input.setCustomValidity('');
     }
 
-    setPasswordError(input.validationMessage);
+    const confirmationInput = document.getElementById('password-confirmation');
+    if (confirmationInput && confirmationInput.value) {
+      if (confirmationInput.value !== input.value) {
+        confirmationInput.setCustomValidity('Las contraseñas no coinciden.');
+      } else {
+        confirmationInput.setCustomValidity('');
+      }
+      setPasswordConfirmationError(confirmationInput.validationMessage);
+    }
+
     setIsValid(input.closest('form').checkValidity());
   }
 
