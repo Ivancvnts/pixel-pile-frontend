@@ -35,6 +35,15 @@
   color: var(--pp-color-accent);
 }
 
+.header__welcome {
+  margin: 0;
+  color: var(--pp-color-text-primary);
+  font-family: var(--pp-font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
 .header__links-container {
   display: flex;
   align-items: center;
@@ -70,7 +79,7 @@
   border-radius: 100px;
   padding: 2px 7px;
   font-family: var(--pp-font-mono);
-  font-size: 11px;
+  font-size: 14px;
   font-weight: 700;
   background-color: var(--pp-color-accent);
   color: var(--pp-color-accent-ink);
@@ -92,6 +101,11 @@
 
   .header__title {
     font-size: 16px;
+  }
+
+  .header__welcome {
+    padding: 8px 11px;
+    font-size: 12px;
   }
 
   .header__link {

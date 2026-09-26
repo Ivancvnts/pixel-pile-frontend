@@ -29,6 +29,9 @@ function Header() {
       <nav
         className={`header__links-container ${isMenuOpen ? 'header__links-container_open' : ''}`}
       >
+        {isLoggedIn ? (
+          <p className="header__welcome">{`Bienvenido ${currentUser.email}`}</p>
+        ) : null}
         <Link className="header__link" to="/">
           Inicio
         </Link>
