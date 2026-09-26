@@ -1,0 +1,136 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: var(--pp-color-text-primary);
+  padding-top: 14px;
+  padding-bottom: 14px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(10, 10, 11, 0.86);
+  backdrop-filter: blur(14px);
+}
+
+.header__logo-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__icon {
+  max-width: 36px;
+}
+
+.header__title {
+  font-family: var(--pp-font-heading);
+  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  letter-spacing: 0.14em;
+}
+
+.header__title_green {
+  color: var(--pp-color-accent);
+}
+
+.header__welcome {
+  margin: 0;
+  color: var(--pp-color-text-primary);
+  font-family: var(--pp-font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+}
+
+.header__links-container {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__link {
+  padding: 9px 13px;
+  color: var(--pp-color-text-primary);
+  background-color: var(--pp-color-chip);
+  border-radius: 16px;
+  font-family: var(--pp-font-body);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.header__link_accent {
+  font-family: var(--pp-font-body);
+  text-decoration: none;
+  color: var(--pp-color-accent);
+  background: none;
+  border: 1px solid var(--pp-color-accent);
+}
+
+.header__link_accent:hover {
+  background-color: var(--pp-color-accent);
+  color: var(--pp-color-accent-ink);
+}
+
+.header__chip {
+  border-radius: 100px;
+  padding: 2px 7px;
+  font-family: var(--pp-font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  background-color: var(--pp-color-accent);
+  color: var(--pp-color-accent-ink);
+}
+
+.header__menu-toggle {
+  display: none; /* oculto en desktop */
+  background: none;
+  border: none;
+  color: var(--pp-color-accent);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+@media screen and (max-width: 544px) {
+  .header__icon {
+    max-width: 28px;
+  }
+
+  .header__title {
+    font-size: 16px;
+  }
+
+  .header__welcome {
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+
+  .header__link {
+    padding: 8px 11px;
+    font-size: 12px;
+  }
+
+  .header__menu-toggle {
+    display: block;
+  }
+
+  .header__links-container {
+    display: none; /* oculto por default en mobile */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    background-color: var(--pp-color-bg);
+    padding: 16px;
+    border-top: 1px solid var(--pp-color-border);
+  }
+
+  .header__links-container_open {
+    display: flex; /* se muestra solo cuando isMenuOpen es true */
+  }
+}
