@@ -67,6 +67,7 @@ function RegisterPopup() {
     } else {
       input.setCustomValidity('');
     }
+    setPasswordError(input.validationMessage);
 
     const confirmationInput = document.getElementById('password-confirmation');
     if (confirmationInput && confirmationInput.value) {
